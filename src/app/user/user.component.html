@@ -1,0 +1,19 @@
+<div class="user-container">
+    <div class="input-container">
+      <input type="text" [(ngModel)]="searchTerm" (input)="onInputChange()">
+      <ul *ngIf="showDropdown">
+        <li *ngFor="let option of filteredOptions">
+          <label class="checkbox-label">
+            <img *ngIf="getUser(option)" [src]="getUser(option).image" alt="Profile Image" class="profile-image">
+            {{ option }}
+            <input type="checkbox" [checked]="isSelected(option)" (change)="toggleOption(option)">
+          </label>
+        </li>
+      </ul>
+    </div>
+    <div class="pill-container">
+      <app-pill *ngFor="let user of selectedUsers" [data]="user" (remove)="removeOption(user)"></app-pill>
+    </div>
+  </div>
+  
+  
